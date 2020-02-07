@@ -28,8 +28,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
+            saveUrlToPrefs();
             initContent();
         }
+    }
+
+    private void saveUrlToPrefs() {
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .edit().putString(MainActivity.PREFERENCE_URL, "https://fleet.numeraliot.com").apply();
     }
 
     private void initContent() {
